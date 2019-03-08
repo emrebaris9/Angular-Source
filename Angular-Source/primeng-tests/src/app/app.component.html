@@ -1,0 +1,63 @@
+<p-dataView [value]="products" layout=list [rows]="6" [paginator]="true" paginatorPosition="both" [lazy]="true"
+    (onLazyLoad)="loadComments($event)" [totalRecords]="totalRecords">
+    <!-- Table Header -->
+    <p-header>
+        <div class="ui-g">
+            <div class="ui-g-8" style="text-align: left; font-size: 25px;">
+                <span>Products</span>
+            </div>
+            <div class="ui-g-4" style="text-align: right;">
+                <p-dataViewLayoutOptions></p-dataViewLayoutOptions>
+            </div>
+        </div>
+    </p-header>
+
+    <!-- List view -->
+    <ng-template let-product pTemplate="listItem">
+        <div id="products" class="ui-g ng-star-inserted" style="padding: 2em;border-bottom: 1px solid #cfcfcf">
+
+            <div class="ui-g-12 ui-md-3" style="text-align: center;">
+                <img id="user-image" [src]="product.imageUrl" width="300" height="180">
+            </div>
+
+            <div id="products-info" class="ui-g-12 ui-md-8 product-details">
+                <div class="ui-g">
+                    <div class="ui-g-12 ui-md-6 ui-lg-4">Balık Adı:</div>
+                    <div class="ui-g-12 ui-md-6 ui-lg-8">
+                        <b> {{product.name}} </b>
+                    </div>
+                    <div class="ui-g-12 ui-md-6 ui-lg-4">Balık Boyutu:</div>
+                    <div class="ui-g-12 ui-md-6 ui-lg-8">
+                        <b> {{product.desc}} </b>
+                    </div>
+                    <div class="ui-g-12 ui-md-6 ui-lg-4">Birim Fiyatı:</div>
+                    <div class="ui-g-12 ui-md-6 ui-lg-8">
+                        <b> {{product.price}}₺ </b>
+                    </div>
+                    <div class="ui-g-12 ui-md-6 ui-lg-4">Balık Boyutu:</div>
+                    <div class="ui-g-12 ui-md-6 ui-lg-8">
+                        <b> {{product.piece}} </b>
+                    </div>
+                </div>
+            </div>
+            <hr class="ui-widget-content" style="border-top:0">
+        </div>
+    </ng-template>
+
+    <!-- Grid view -->
+    <ng-template let-product pTemplate="gridItem">
+
+        <div id="products" class="ui-g-12 ui-md-3" style="" >
+            <p-panel [header]="product.id" [style]="{'text-align':'center'}"> 
+
+                <img [src]="product.imageUrl" class="w-100" alt="..." width="310" height="200">
+
+                <div class="product-name"><span><b>{{product.name}}</b></span></div>
+                <hr class="ui-widget-content">
+                <div class="product-email"><span>{{product.piece}} Adet&nbsp;-</span><span>&nbsp;{{product.desc}}</span></div>
+                <div class="product-body"></div>
+                <div class="product-body"><span>{{product.price}}₺</span></div>
+            </p-panel>
+        </div>
+    </ng-template>
+</p-dataView>
